@@ -1,0 +1,12 @@
+<div ng-controller="EventsMapController as eventsMapScope">
+	<ion-header-bar class="bar-positive">
+		<img src="img/icon_small.png" alt="Logo" style="padding-right: 20px;" />
+		<h1 class="title">{{ 'events.map.title' | translate }}</h1>
+		<div class="buttons">
+			<button menu-toggle="right" class="button button-icon icon ion-funnel"></button>
+		</div>
+	</ion-header-bar>
+	<ion-content class="has-header">
+		<div id="map-events" style="height: 100%" data-tap-disabled="true"></div>
+	</ion-content>
+</div>

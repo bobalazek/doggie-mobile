@@ -1,0 +1,38 @@
+<ion-view>
+	<ion-nav-title>
+		{{ 'members-area.me.pets.title' | translate }}
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button ui-sref="members-area.me.pets.new" class="button button-icon icon ion-plus-circled"></button>
+	</ion-nav-buttons>
+	<ion-content>
+		<ion-list class="item-thumbnail-left pet" style="padding: 0;">
+			<ion-item
+				ng-repeat="pet in membersAreaMePetsScope.pets"
+				ui-sref="members-area.me.pets.detail({ id : pet.id })">
+				<img ng-src="{{ pet.image.url }}" />
+				<div>
+					<small style="font-size: 12px;">
+						<i class="icon ion-{{ pet.gender }}"></i>
+					</small>
+					{{ pet.name }}
+					<br />
+					<i class="icon ion-clock"></i>
+					{{ membersAreaMePetsScope.animalAgeToHumanAge( pet.age ) }}
+				</div>
+				<ion-option-button class="button-calm" ui-sref="members-area.me.pets.edit({ id : pet.id })">
+					{{ 'general.edit' | translate }}
+				</ion-option-button>
+				<ion-option-button class="button-assertive" ng-click="membersAreaMePetsScope.removePet(pet.id)">
+					{{ 'general.remove' | translate }}
+				</ion-option-button>
+			</ion-item>
+			<ion-item ng-show="membersAreaMePetsScope.pets.length == 0">
+				{{ 'members-area.me.pets.noneFound' | translate }}
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

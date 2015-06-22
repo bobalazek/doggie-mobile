@@ -1,0 +1,44 @@
+<ion-view>
+	<ion-nav-title>
+		{{ 'members-area.profile.settings.title' | translate }}
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="list">
+			<div class="text-center">
+				<h5>{{ 'general.image' | translate }}</h5>
+				<div style="margin-bottom: 20px;">
+					<img id="profile-image" ng-src="{{ membersAreaMeProfileSettingsScope.data.image }}" alt="Profile image" style="display: block; max-width: 100%; margin: 0 auto;" />
+					<input id="profile-file" type="file" style="height: 1px; width: 1px;" ng-file-select="membersAreaMeProfileSettingsScope.fileChanged($files, $event)" />
+				</div>
+				<div style="margin-bottom: 20px;">
+					<button class="button button-primary" ng-click="membersAreaMeProfileSettingsScope.pickImageFromGallery()">
+						<i class="icon ion-images"></i>
+					</button>
+					<button class="button button-primary" ng-click="membersAreaMeProfileSettingsScope.takeAPicture()">
+						<i class="icon ion-camera"></i>
+					</button>
+				</div>
+			</div>
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">
+					{{ 'general.firstName' | translate }}
+				</span>
+				<input type="text" placeholder="Moje ime" ng-model="membersAreaMeProfileSettingsScope.data.firstName" />
+			</label>
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">
+					{{ 'general.lastName' | translate }}
+				</span>
+				<input type="text" placeholder="Moj priimek" ng-model="membersAreaMeProfileSettingsScope.data.lastName" />
+			</label>
+		</div>
+		<div class="padding">
+			<button class="button button-block button-positive" ng-click="membersAreaMeProfileSettingsScope.submitForm()">
+				{{ 'general.save' | translate }}
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

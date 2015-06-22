@@ -1,0 +1,52 @@
+<div ng-controller="AnimalsListController as animalsListScope">
+	<ion-header-bar class="bar-positive">
+		<img src="img/icon_small.png" alt="Logo" style="padding-right: 20px;" />
+		<h1 class="title">
+			{{ 'animals.list.title' | translate }} - 
+			{{ 'animals.list.subtitle.' + animalsScope.which | translate }}
+		</h1>
+		<div class="buttons">
+			<button menu-toggle="right" class="button button-icon icon ion-funnel"></button>
+		</div>
+	</ion-header-bar>
+	<ion-content class="has-header">
+		<div class="list">
+			<a class="item item-thumbnail-left" bindonce
+				collection-repeat="animal in animalsScope.animals | filter : animalsScope.searchText | orderBy : animalsScope.orderByFilter : animalsScope.orderByFilterReverse | filter : animalsScope.filterBySpecies track by animal.id"
+				collection-item-height="99"
+				style="display: block; width: 100%;" 
+				ui-sref="animals.detail({ id : animal.id, hideMenu : true })"
+				ng-class="{ featured : animal.isFeatured }">
+				<img ng-src="{{ animal.image.url }}" />
+				<h2>
+					<small style="font-size: 12px;">
+						<i class="icon ion-{{ animal.gender }}"></i>
+					</small>
+					{{ animal.name }} 
+					<small style="font-size: 12px;">
+						({{ animalsScope.animalAgeToHumanAge( animal.age ) }})
+					</small>
+				</h2>
+				<p ng-show="animal.location.isAnonymous || animal.location.full">
+					<i class="icon ion-location"></i>
+					<span ng-show="animal.location.isAnonymous">
+						{{ 'general.anonymous' | translate }}
+					</span>
+					<span ng-show="animal.location.full">
+						{{ animal.location.full }}
+						<small ng-show="animal.location.place">
+							<br />
+							({{ animal.location.place.name }})
+						</small>
+					</span>
+				</p>
+			</a>
+			<div class="item" ng-show="( animalsScope.animals | filter : animalsScope.searchText | filter : animalsScope.filterBySpecies ).length == 0 && animalsScope.animals.length > 0 && animalsScope.animalsLoaded" style="white-space: normal;">
+				{{ 'animals.noneFoundWithThisCriteria' | translate }}<span ng-show="animalsScope.searchText != ''"> {{ 'animals.andKeyword' | translate }} <b>{{ animalsScope.searchText }}</b></span>.
+			</div>
+			<div class="item" ng-show="animalsScope.animals.length == 0">
+				{{ 'animals.noneFound' | translate }}
+			</div>
+		</div>
+	</ion-content>
+</div>

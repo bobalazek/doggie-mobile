@@ -1,0 +1,25 @@
+<ion-view>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		{{ 'contact.title' | translate }}
+	</ion-nav-title>
+	<ion-content class="padding has-header">
+		<div class="list">
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">{{ 'general.name' | translate }}</span>
+				<input type="text" placeholder="{{ 'general.yourName' | translate }}" ng-model="data.name">
+			</label>
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">{{ 'general.email' | translate }}</span>
+				<input type="email" placeholder="{{ 'general.yourEmail' | translate }}" ng-model="data.email">
+			</label>
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">{{ 'general.message' | translate }}</span>
+				<textarea placeholder="{{ 'general.yourMessage' | translate }}" rows="14" ng-model="data.message"></textarea>
+			</label>
+		</div>
+		<button class="button button-block button-positive" ng-click="send()">{{ 'general.send' | translate }}</button>
+	</ion-content>
+</ion-view>

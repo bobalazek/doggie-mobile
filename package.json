@@ -1,0 +1,17 @@
+{
+  "name": "Doggie",
+  "version": "1.0.0",
+  "description": "Doggie is an web and mobile application for all dog owners, where you will be able to find places (hotels, restaurants, nannies, shops, and more) for you and your furry friends. Besides that, you will also be able to check the latest news, events and find animals (from shelters, lost and found).",
+  "dependencies": {
+    "gulp": "^3.5.6",
+    "gulp-sass": "^0.7.1",
+    "gulp-concat": "^2.2.0",
+    "gulp-minify-css": "^0.3.0",
+    "gulp-rename": "^1.2.0"
+  },
+  "devDependencies": {
+    "bower": "^1.3.3",
+    "gulp-util": "^2.2.14",
+    "shelljs": "^0.3.0"
+  }
+}

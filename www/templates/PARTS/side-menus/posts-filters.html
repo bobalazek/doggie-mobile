@@ -1,0 +1,24 @@
+<header class="bar bar-header bar-positive">
+	<h1 class="title">{{ 'filters.title' | translate }}</h1>
+</header>
+<ion-content class="has-header">
+	<div class="list list-inset">
+		<label class="item item-input">
+			<i class="icon ion-search placeholder-icon"></i>
+			<input ng-model="postsScope.searchText" type="text" placeholder="{{ 'filters.search' | translate }}">
+		</label>
+	</div>
+	<label class="item item-input item-select">
+		<div class="input-label">
+			{{ 'filters.sortBy' | translate }}
+		</div>
+		<select ng-model="postsScope.orderByFilter">
+			<option value="timeCreated.date" selected="selected">
+				{{ 'filters.sortBy.date' | translate }}
+			</option>
+			<option value="title" >
+				{{ 'filters.sortBy.title' | translate }}
+			</option>
+		</select>
+	</label>
+</ion-content>

@@ -1,0 +1,17 @@
+<ion-view ng-controller="PlacesController as placesScope">
+	<ion-side-menus enable-menu-with-back-views="false">
+		<ion-side-menu-content>
+			<ion-tabs class="tabs-striped tabs-background-positive tabs-color-light tabs-icon-top tabs-top">
+				<ion-tab title="{{ 'menu.list' | translate }}" icon="ion-document-text">
+					<ion-nav-view name="list"></ion-nav-view>
+				</ion-tab>
+				<ion-tab title="{{ 'menu.map' | translate }}" icon="ion-earth" on-select="placesScope.broadcastPlacesFiltersChanged(true)">
+					<ion-nav-view name="map"></ion-nav-view>
+				</ion-tab>
+			</ion-tabs>
+		</ion-side-menu-content>
+		<ion-side-menu side="right">
+			<ng-include src="'templates/PARTS/side-menus/places-filters.html'"></ng-include>
+		</ion-side-menu>
+	</ion-side-menus>
+</ion-view>

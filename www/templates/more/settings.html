@@ -1,0 +1,44 @@
+<ion-view>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		{{ 'settings.title' | translate }}
+	</ion-nav-title>
+	<ion-content class="has-header">
+		<div class="list">
+			<label class="item item-input item-select">
+				<div class="input-label">
+					{{ 'general.language' | translate }}
+				</div>
+				<select ng-model="settingsScope.user.locale">
+					<option value="sl_SI">{{ 'languages.slovenian' | translate }}</option>
+					<option value="en_US" disabled="disabled">
+						{{ 'languages.english' | translate }}
+						({{ 'general.soon' | translate }})
+					</option>
+					<option value="de_DE" disabled="disabled">
+						{{ 'languages.german' | translate }}
+						({{ 'general.soon' | translate }})
+					</option>
+				</select>
+			</label>
+			<div class="padding">
+				<h4>{{ 'settings.location' | translate }}</h4>
+				<div id="map"></div>
+			</div>
+			<div class="item">
+				{{ 'settings.liveLocation' | translate }}
+				<span class="item-note" ng-class="{ balanced : settingsScope.user.location.hasTrackingPermissions, assertive : ! settingsScope.user.location.hasTrackingPermissions }">
+					{{ ( settingsScope.user.location.hasTrackingPermissions == true ? 'general.yes' : 'general.no' ) | translate }}
+				</span>
+			</div>
+			<!-- 
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">{{ 'settings.locationManual' | translate }}</span>
+				<input type="text" placeholder="{{ 'settings.locationManualPlaceholder' | translate }}">
+			</label>
+			-->
+		</div>				
+	</ion-content>
+</ion-view>

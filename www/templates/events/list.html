@@ -1,0 +1,81 @@
+<ion-view>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button menu-toggle="right" class="button button-icon icon ion-funnel"></button>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		{{ 'events.list.title' | translate }}
+	</ion-nav-title>
+	<ion-content class="padding">
+		<div collection-repeat="event in eventsScope.events | filter : eventsScope.searchText | orderBy : eventsScope.orderByFilter | filter : eventsScope.filterByType track by event.id"
+			item-height="250px">
+			<div class="card">
+				<div class="item">
+					<h2>{{ event.name }}</h2>
+					<p>
+						<i class="icon ion-clock"></i>
+						{{ event.timeStart.date | amDateFormat : 'dddd, Do MMMM YYYY ob HH:mm' }}
+						<small>
+							(<span am-time-ago="event.timeStart.date"></span>)
+						</small>
+					</p>
+					<p ng-show="event.timeApplicationDeadline">
+						<i class="icon ion-android-timer"></i>
+						{{ event.timeApplicationDeadline.date | amDateFormat : 'dddd, Do MMMM YYYY ob HH:mm' }}
+						<small>
+							(<span am-time-ago="event.timeApplicationDeadline.date"></span>)
+						</small>
+						<small>- {{ 'general.applicationDeadline' | translate }}</small>
+					</p>
+					<p ng-hide="event.location.is_anononymous">
+						<i class="icon ion-location"></i>
+						{{ event.location.full }}
+						<small ng-show="event.location.place">
+							<br />
+							({{ event.location.place.name }})
+						</small>
+					</p>
+					<p ng-show="event.organizer">
+						<i class="icon ion-ios7-people"></i>
+						{{ event.organizer }}
+					</p>
+					<p>
+						<i class="icon ion-bookmark"></i>
+						{{ 'events.types.' + event.type | translate }}
+					</p>
+				</div>
+				<div class="item item-body" ng-show="event.description && event.image.url">
+					<img class="full-image" ng-show="event.image.url" ng-src="{{ event.image.url }}" style="max-width: 480px; display: block; margin: 0 auto;">
+					{{ event.description | limitTo : 256 }}...
+				</div>
+				<a class="item item-icon-left" ui-sref="events.detail({ id : event.id })">
+					<i class="icon ion-search"></i>
+					{{ 'general.details' | translate }}
+				</a>
+			</div>
+		</div>
+		<div class="list card card-full-width"
+			ng-show="
+				eventsScope.events.length == 0 ||
+				(eventsScope.events | filter : eventsScope.searchText | filter : eventsScope.filterByType).length == 0 && eventsScope.eventsLoaded
+			">
+			<div class="item item-body" ng-show="eventsScope.events.length == 0">
+				{{ 'events.noneFound' | translate }}
+			</div>
+			<div class="item item-body" ng-show="(eventsScope.events | filter : eventsScope.searchText | filter : eventsScope.filterByType).length == 0 && eventsScope.eventsLoaded">
+				{{ 'events.noneFoundWithThisCriteria' | translate }}<span ng-show="eventsScope.searchText != ''"> {{ 'posts.andKeyword' | translate }} <b>{{ eventsScope.searchText }}</b></span>.
+			</div>
+		</div>
+	</ion-content>
+	<ion-footer-bar class="bar-stable">
+		<div class="buttons"></div>
+		<h1 class="title"></h1>
+		<div class="buttons">
+			<button class="button button-clear">
+				<span ng-bind="(eventsScope.events | filter : eventsScope.searchText | filter : eventsScope.filterByType).length">0</span> {{ 'events.eventsShown' | translate }}
+			</button>
+		</div>
+	</ion-footer-bar>
+</ion-view>

@@ -1,0 +1,29 @@
+<ion-view>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		{{ 'information.title' | translate }}
+	</ion-nav-title>
+	<ion-content class="padding has-header">
+		<h2>Verzija</h2>
+		Trenutna verzija aplikacije je: <b>{{ applicationScope.version }}</b>. <br />
+		Kodno ime: <b>{{ applicationScope.versionCodename }}</b>. <br />
+		Nazadnje posodobljeno <b>{{ applicationScope.timeLastUpdated }}</b>.
+		<h2>O Nas</h2>
+		<p>Za aplikacijo Psiček stoji podjetje Corcosoft, ki se ukvarja z izdelavo spletnih strani in trgovin, spletnih ter mobilnih aplikacij in še več.</p>
+		<h2>Ideja</h2>
+		<p>Ideja je nastala iz lastne potrebe po iskanju lokacij, primernih za pse. Ker še taka aplikacija ni obstajala (v Sloveniji), smo se odločili da bomo probali izdelat našo lastno.</p>
+		<h2>Vizija</h2>
+		<p>Postati največja skupnost za pasje ljubitelje po vsej Sloveniji (ter v bljižni prihodnosti tudi čez meja).</p>
+		<h2>Cilj</h2>
+		<p>Naš cilj je predvsem ustvariti skupnost pasjih ljubiteljev</p>
+		<h2>Sodelovanje</h2>
+		<p>V kolikor ste pripravljeni sodelovati z nami, nam prosimo napišite email na psicek@corcosoft.com ali pa v meniju kliknite kontakt, ter nam napišite sporočilo.</p>
+		<h2>Povezave</h2>
+		<p>
+			<a class="button button-positive button-block" ng-click="applicationScope.openWebsite('http://psicek.si/privacy-policy')">Politika zasebnosti</a>
+			<a class="button button-positive button-block" ng-click="applicationScope.openWebsite('http://psicek.si/terms-of-service')">Pravila uporabe</a>
+		</p>
+	</ion-content>
+</ion-view>

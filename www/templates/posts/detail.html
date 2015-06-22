@@ -1,0 +1,25 @@
+<ion-view>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon" ng-hide="postsDetailScope.hideMenu"></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button ng-click="postsDetailScope.goBack()" class="button button-icon icon ion-arrow-left-c"></button>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		{{ postsDetailScope.post.title }}
+	</ion-nav-title>
+	<ion-content padding="true">
+		<div class="content-loading" ng-hide="postsDetailScope.postLoaded">
+			<i class="icon ion-loading-a"></i>
+		</div>
+		<div class="content-loaded" ng-show="postsDetailScope.postLoaded">
+			<img ng-show="postsDetailScope.post.image.url" ng-src="{{ postsDetailScope.post.image.url }}" alt="Post image" style="display: block; width: 100%; max-width: 480px; margin: 0 auto 20px;" />
+			<div class="card">
+				<div class="item item-text-wrap">
+					<div ng-bind-html="postsDetailScope.post.content"
+						style="white-space: pre;"></div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-view title="{{ 'members-area.login.title' | translate }}">
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="list">
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">{{ 'general.email' | translate }}</span>
+				<input type="text" placeholder="{{ 'general.yourEmail' | translate }}" ng-model="membersAreaLoginScope.data.email" />
+			</label>
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">{{ 'general.password' | translate }}</span>
+				<input type="password" placeholder="{{ 'general.yourPassword' | translate }}" ng-model="membersAreaLoginScope.data.password" />
+			</label>
+		</div>
+		<div class="padding">
+			<button class="button button-block button-positive" ng-click="membersAreaLoginScope.submitForm()">{{ 'members-area.login.loginButton' | translate }}</button>
+		</div>
+		<div class="padding">
+			<button class="button button-block button-stable" ui-sref="members-area.reset-password">{{ 'members-area.login.resetPasswordButton' | translate }}</button>
+		</div>
+	</ion-content>
+</ion-view>

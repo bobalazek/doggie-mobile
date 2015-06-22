@@ -1,0 +1,30 @@
+<ion-modal-view>
+	<ion-header-bar>
+		<h1 class="title">Kontaktirajte nas</h1>
+	</ion-header-bar>
+	<ion-content class="padding">
+		<div class="list">
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">Ime</span>
+				<input type="text" placeholder="Vaše ime" ng-model="placesDetailScope.modalData.name">
+			</label>
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">Email</span>
+				<input type="email" placeholder="Vaše email naslov" ng-model="placesDetailScope.modalData.email">
+			</label>
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">Sporočilo</span>
+				<textarea placeholder="Vaše sporočilo" rows="8" ng-model="placesDetailScope.modalData.message"></textarea>
+			</label>
+			<input type="hidden" ng-model="placesDetailScope.contactLocationId">
+		</div>
+		<div class="row">
+			<div class="col">
+				<button class="button button-block button-positive" ng-click="placesDetailScope.modalSend()">Pošlji</button>
+			</div>
+			<div class="col">
+				<button class="button button-block button-dark" ng-click="placesDetailScope.modalClose()">Zapri</button>
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>

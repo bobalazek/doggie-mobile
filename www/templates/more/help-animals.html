@@ -1,0 +1,48 @@
+<ion-view>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		{{ 'help-animals.title' | translate }}
+	</ion-nav-title>
+	<ion-content class="has-header">
+		<p class="padding">
+			Ker aplikacija potrebuje finančna sredstva za delovanje in razvoj, bomo hvaležni, če nas boste podprli z klikom in ogledom spodnjega oglasa. Zraven tega, bomo <b>50% sredstev iz teh oglasov darovali društvu / zavetišču</b>, ki trenutno najbolj potrebujejo!
+		</p>
+
+		<ul class="list">
+			<li class="item">
+				{{ 'help-animals.visitsToday' | translate }}
+				<span class="badge badge-assertive">
+					{{ helpAnimalsScope.statistics.visitsToday }}
+				</span>
+			</li>
+			<li class="item">
+				{{ 'help-animals.visitsThisWeek' | translate }}
+				<span class="badge badge-assertive">
+					{{ helpAnimalsScope.statistics.visitsThisWeek }}
+				</span>
+			</li>
+			<li class="item">
+				{{ 'help-animals.visitsThisMonth' | translate }}
+				<span class="badge badge-assertive">
+					{{ helpAnimalsScope.statistics.visitsThisMonth }}
+				</span>
+			</li>
+			<li class="item">
+				{{ 'help-animals.visitsTotal' | translate }}
+				<span class="badge badge-assertive">
+					{{ helpAnimalsScope.statistics.visitsTotal }}
+				</span>
+			</li>
+		</ul>
+		<div class="padding">
+			PREDVIDEN zaslužek za en ogled je 0.05€ - 0.1€!
+		</div>
+		<div class="padding">
+			<button ng-click="helpAnimalsScope.showAd()" class="button button-large button-block button-positive">
+				{{ 'help-animals.buttonText' | translate }}
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

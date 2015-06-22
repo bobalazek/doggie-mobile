@@ -1,0 +1,60 @@
+<ion-view>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon" ng-hide="eventsDetailScope.hideMenu"></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button ng-click="eventsDetailScope.goBack()" class="button button-icon icon ion-arrow-left-c"></button>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		{{ eventsDetailScope.event.name }}
+	</ion-nav-title>
+	<ion-content padding="true">
+		<div class="content-loading" ng-hide="eventsDetailScope.eventLoaded">
+			<i class="icon ion-loading-a"></i>
+		</div>
+		<div class="content-loaded" ng-show="eventsDetailScope.eventLoaded">
+			<div class="card">
+				<div class="item item-text-wrap">
+					<h1>{{ eventsDetailScope.event.name }}</h1>
+					<p>
+						<i class="icon ion-clock"></i>
+						{{ eventsDetailScope.event.timeStart.date | amDateFormat : 'dddd, Do MMMM YYYY ob H:mm' }}
+						<small>
+							(<span am-time-ago="eventsDetailScope.event.timeStart.date"></span>)
+						</small>
+					</p>
+					<p>
+						<i class="icon ion-android-timer"></i>
+						{{ eventsDetailScope.event.timeApplicationDeadline.date | amDateFormat : 'dddd, Do MMMM YYYY ob H:mm' }}
+						<small>
+							(<span am-time-ago="eventsDetailScope.event.timeApplicationDeadline.date"></span>)
+						</small>
+						<small>- {{ 'general.applicationDeadline' | translate }}</small>
+					</p>
+					<p ng-hide="eventsDetailScope.event.location.is_anononymous">
+						<i class="icon ion-location"></i>
+						{{ eventsDetailScope.event.location.full }}
+						<small ng-show="eventsDetailScope.event.location.place">
+							<br />
+							({{ eventsDetailScope.event.location.place.name }})
+						</small>
+					</p>
+					<p ng-show="eventsDetailScope.event.organizer">
+						<i class="icon ion-ios7-people"></i>
+						{{ eventsDetailScope.event.organizer }}
+					</p>
+					<p>
+						<i class="icon ion-bookmark"></i>
+						{{ 'events.types.' + eventsDetailScope.event.type | translate }}
+					</p>
+				</div>
+			</div>
+			<div class="card" ng-show="eventsDetailScope.event.description || eventsDetailScope.event.image.url">
+				<div class="item item-text-wrap">
+					<img ng-show="eventsDetailScope.event.image.url" ng-src="{{ eventsDetailScope.event.image.url }}" alt="Event image" style="display: block; max-width: 480px; margin: 0 auto 20px;" />
+					{{ eventsDetailScope.event.description }}
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

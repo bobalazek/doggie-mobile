@@ -1,0 +1,74 @@
+<ion-view>
+	<ion-slide-box on-slide-changed="slideHasChanged($index)" style="height: 100%;">
+		<ion-slide>
+			<div class="box">
+				<div class="bar bar-header bar-positive">
+					<h1 class="title">Dobrodošli v aplikaciji Psiček!</h1>
+				</div>
+				<div class="content has-header padding">
+					<div class="card">
+						<div class="item item-text-wrap">
+							<p>Psiček je mobilna aplikacija namenjena vsem ljubiteljem živali.</p>
+							<p>Preko nje boste brez težav našli vse koristne informacije s pasjega sveta. Poiskali boste lahko lokacije, kam lahko brez težag greste skupaj s svojim štirinožnim prijateljem, katere so vam najbližje veterine, pasje šole, trenerji, kateri dogodki se bodo odvijali ter še veliko več!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ion-slide>
+		<ion-slide>
+			<div class="box">
+				<div class="bar bar-header bar-positive">
+					<h1 class="title">Izberite kar vas trenutno zanima...</h1>
+				</div>
+				<div class="content has-header padding">
+					<div class="card">
+						<div class="item item-text-wrap">
+							<p>Psiček vam nudi zanimive menijske točke, v katerih se zagotovo najde kaj zate in tvojega štirinožnega prijatelja.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ion-slide>
+		<ion-slide>
+			<div class="box">
+				<div class="bar bar-header bar-positive">
+					<h1 class="title">Sortirajte, iščite, izbirajte...</h1>
+				</div>
+				<div class="content has-header padding">
+					<div class="card">
+						<div class="item item-text-wrap">
+							<p>Za opcijo iskanja in sortiranja izberite ikono sortiranja.</p>
+							<p>SLIKA MENIJA KI KAŽE NA IKONO SORTIRANJA</p>
+							<p>S klikom na ikono se bodo prikazali filtri. Tu lahko uporabite iskanje, sortiranje po razdalji in imenu ter različnih tipih, kot so naprimer parki, pasji saloni, šole, veterine, ...</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ion-slide>
+		<ion-slide>
+			<div class="box">
+				<div class="bar bar-header bar-positive">
+					<h1 class="title">Nasveti</h1>
+				</div>
+				<div class="content has-header padding">
+					<div class="card">
+						<div class="item item-text-wrap">
+							<p>V filtirih lahko označite katere tipe trenutno želite. Ko je v krogu kljukica je tip izbran.</p>
+							<p>Pri določenih tipih je ikonica "več", katero boste lahko uporabili v primeru, ko želite vpogled v podkategorijo.</p>
+							<p>SLIKA POVEČAVE ZEMLJEVIDA</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<p style="color: #ef4e3a; font-size: 16px;">
+									OPOZORILO: <br />
+									V kolikor je možno, prosimo da uporabljate aplikacijo (v trenutni beta fazi) SAMO na Wi-Fi omrežju (preko mobilnega omrežja le, ČE IMATE VELIKO KOLIČINO PRENOSA PODATKOV)!
+								</p>
+						</div>
+					</div>	
+					<button class="button button-positive button-large button-block" ng-click="applicationScope.startApplication()">Začni z aplikacijo</button>
+				</div>
+			</div>
+		</ion-slide>
+	</ion-slide-box>
+</ion-view>

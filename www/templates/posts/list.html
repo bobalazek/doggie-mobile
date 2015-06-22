@@ -1,0 +1,68 @@
+<ion-view>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button menu-toggle="right" class="button button-icon icon ion-funnel"></button>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		{{ 'posts.list.title' | translate }}
+	</ion-nav-title>
+	<ion-content>
+		<ion-refresher
+			pulling-text="{{ 'general.pullToRefresh' | translate }}"
+			on-refresh="postsScope.initializePosts()">
+		</ion-refresher>
+		<div class="list posts-list">
+			<div class="item post" bindonce
+				ng-class="{ 'item-thumbnail-left' : post.image, 'post-first' : $index == 0 }"
+				collection-repeat="post in postsScope.posts | filter : postsScope.searchText | orderBy : postsScope.orderByFilter : postsScope.orderByFilterReverse track by post.id"
+				collection-item-height="postsScope.itemHeight($index)"
+				ui-sref="posts.detail( { id : post.id } )" >
+				<img ng-show="post.image" ng-src="{{ post.image.url }}" alt="Post photo" width="80" height="80" />
+				<div class="post-background-image" style="background-image: url({{ post.image.url }})"></div>
+				<div class="row">
+					<div class="col">
+						<h2>{{ post.title }}</h2>
+						<div>
+							<span class="html-element" ng-bind-html="post.content | htmlToPlaintext | limitTo : 32"></span>...
+						</div>
+					</div>
+					<div class="col right-side">
+						<div>
+							<i class="icon ion-arrow-right-c" style="font-size: 36px;"></i>
+						</div>
+						<div>
+							<i class="icon ion-clock"></i>
+							{{ post.timeCreated.date | amDateFormat : 'Do MMM YYYY H:mm' }}
+						</div>
+						<div>
+							<small>
+								(<span am-time-ago="post.timeCreated.date"></span>)
+							</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="list card card-full-width"
+			ng-show="postsScope.posts.length == 0 ||
+			(postsScope.posts | filter : postsScope.searchText | orderBy : postsScope.orderByFilter).length == 0 && postsScope.postsLoaded">
+			<div class="item item-body" ng-show="postsScope.posts.length == 0">
+				{{ 'posts.noneFound' | translate }}
+			</div>
+			<div class="item item-body" ng-show="(postsScope.posts | filter : postsScope.searchText | orderBy : postsScope.orderByFilter).length == 0 && (postsScope.postsLoaded && postsScope.posts.length != 0)">
+				{{ 'posts.noneFoundWithThisCriteria' | translate }}<span ng-show="postsScope.searchText != ''"> {{ 'posts.andKeyword' | translate }} <b>{{ postsScope.searchText }}</b></span>.
+			</div>
+		</div>
+	</ion-content>
+	<ion-footer-bar class="bar-stable">
+		<div class="buttons"></div>
+		<h1 class="title"></h1>
+		<div class="buttons">
+			<button class="button button-clear">
+				<span ng-bind="(postsScope.posts | filter : postsScope.searchText | filter : postsScope.filterByType).length">0</span> {{ 'posts.postsShown' | translate }}
+			</button>
+		</div>
+	</ion-footer-bar>
+</ion-view>

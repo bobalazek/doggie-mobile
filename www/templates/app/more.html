@@ -1,0 +1,27 @@
+<ion-view>
+	<ion-header-bar class="bar-positive">
+		<img src="img/icon_small.png" alt="Logo" style="padding-right: 20px;" />
+		<h1 class="title">
+			{{ 'menu.more' | translate }}
+		</h1>
+	</ion-header-bar>
+	<ion-content class="has-header">
+		<ion-list>
+			<a ui-sref="index" class="item" ng-class="{ active: applicationScope.isActive('/index')}">
+				{{ 'menu.intro' | translate }}
+			</a>
+			<a ui-sref="more.help-animals" class="item" ng-class="{ active: applicationScope.isActive('/more/help-animals')}">
+				{{ 'menu.helpAnimals' | translate }}
+			</a>
+			<a ui-sref="more.information" class="item" ng-class="{ active: applicationScope.isActive('/more/information')}">
+				{{ 'menu.information' | translate }}
+			</a>
+			<a ui-sref="more.settings" class="item" ng-class="{ active: applicationScope.isActive('/more/settings', true)}">
+				{{ 'menu.settings' | translate }}
+			</a>
+			<a ui-sref="more.contact" class="item" ng-class="{ active: applicationScope.isActive('/more/contact')}">
+				{{ 'menu.contact' | translate }}
+			</a>
+		</ion-list>
+	</ion-content>
+</ion-view>

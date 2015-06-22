@@ -1,0 +1,144 @@
+<ion-view>
+	<ion-nav-title>
+		{{ membersAreaMePetsDetailScope.pet.name }}
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button ui-sref="members-area.me.pets.list" ui-sref="members-area.me.pets.list" class="button button-icon icon ion-arrow-left-c"></button>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="content-loading" ng-hide="membersAreaMePetsDetailScope.petLoaded">
+			<i class="icon ion-loading-a"></i>
+		</div>
+		<div class="content-loaded" ng-show="membersAreaMePetsDetailScope.petLoaded">
+			<div class="row">
+				<div class="col">
+					<img id="pet-image" ng-src="{{ membersAreaMePetsDetailScope.pet.image.url }}" alt="Pet image" style="display: block; max-width: 100%; margin: 0 auto;" />
+				</div>
+				<div class="col">
+					<h3>{{ 'general.information' | translate }}</h3>
+					<p>
+						{{ 'general.name' | translate }}:
+						<b>{{ membersAreaMePetsDetailScope.pet.name }}</b>
+					</p>
+					<p>
+						{{ 'general.gender' | translate }}:
+						<b>{{ 'general.' + membersAreaMePetsDetailScope.pet.gender | translate }}</b>
+					</p>
+					<p>
+						{{ 'general.species' | translate }}:
+						<b>{{ 'animals.species.' + membersAreaMePetsDetailScope.pet.species | translate }}</b>
+					</p>
+					<p ng-show="membersAreaMePetsDetailScope.pet.breed">
+						{{ 'general.breed' | translate }}:
+						<b>{{ membersAreaMePetsDetailScope.pet.breed }}</b>
+					</p>
+					<p>
+						{{ 'general.birthdate' | translate }}:
+						<b>{{ membersAreaMePetsDetailScope.pet.birthdate.date | amDateFormat : 'Do MMMM YYYY' }}</b>
+					</p>
+					<p ng-show="membersAreaMePetsDetailScope.pet.weight">
+						{{ 'general.weight' | translate }}:
+						<b>{{ membersAreaMePetsDetailScope.pet.weight }}</b>
+					</p>
+					<p ng-show="membersAreaMePetsDetailScope.pet.size">
+						{{ 'general.weight' | translate }}:
+						<b>{{ membersAreaMePetsDetailScope.pet.size }}</b>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<h3>{{ 'general.detailed' | translate }}</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div>
+						<b>{{ 'general.chipped' | translate }}:</b>
+						{{ membersAreaMePetsDetailScope.pet.isMicrochipped ? 'general.yes' : 'general.no' | translate }}
+					</div>
+					<div ng-show="membersAreaMePetsDetailScope.pet.isMicrochipped" class="padding-left">
+						<div ng-show="membersAreaMePetsDetailScope.pet.microchipNumber">
+							<b>{{ 'general.number' | translate }}:</b>
+							{{ membersAreaMePetsDetailScope.pet.microchipNumber }}
+						</div>
+						<div ng-show="membersAreaMePetsDetailScope.pet.microchipLocation ">
+							<b>{{ 'general.location' | translate }}:</b>
+							{{ membersAreaMePetsDetailScope.pet.microchipLocation }}
+						</div>
+						<div>
+							<b>{{ 'general.date' | translate }}:</b>
+							{{ membersAreaMePetsDetailScope.pet.timeMicrochipped.date | amDateFormat : 'Do MMMM YYYY' }}
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div>
+						<b>{{ 'general.tattooed' | translate }}:</b>
+						{{ membersAreaMePetsDetailScope.pet.isTattooed ? 'general.yes' : 'general.no' | translate }}
+					</div>
+					<div ng-show="membersAreaMePetsDetailScope.pet.isTattooed" class="padding-left">
+						<div ng-show="membersAreaMePetsDetailScope.pet.tattooNumber">
+							<b>{{ 'general.number' | translate }}:</b>
+							{{ membersAreaMePetsDetailScope.pet.tattooNumber }}
+						</div>
+						<div>
+							<b>{{ 'general.date' | translate }}:</b>
+							{{ membersAreaMePetsDetailScope.pet.timeTattooed.date | amDateFormat : 'Do MMMM YYYY' }}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div>
+						<b>{{ 'general.vaccinated' | translate }}:</b>
+						{{ membersAreaMePetsDetailScope.pet.isVaccinated ? 'general.yes' : 'general.no' | translate }}
+					</div>
+					<div ng-show="membersAreaMePetsDetailScope.pet.isVaccinated" class="padding-left">
+						<div>
+							<b>{{ 'general.lastTime' | translate }}:</b>
+							{{ membersAreaMePetsDetailScope.pet.timeVaccinatedLast.date | amDateFormat : 'Do MMMM YYYY' }} 
+							(<span am-time-ago="membersAreaMePetsDetailScope.pet.timeVaccinatedLast.date"></span>)
+						</div>
+					</div>
+					<div class="padding-left">
+						<b>{{ 'general.nextTime' | translate }}:</b>
+						{{ membersAreaMePetsDetailScope.pet.timeVaccinatedNext.date | amDateFormat : 'Do MMMM YYYY' }} 
+						(<span am-time-ago="membersAreaMePetsDetailScope.pet.timeVaccinatedNext.date"></span>)
+					</div>
+				</div>
+			</div>
+			<div ng-show="membersAreaMePetsDetailScope.pet.sizeNeck && membersAreaMePetsDetailScope.pet.sizeChest">
+				<div class="row">
+					<div class="col">
+						<h3>{{ 'general.sizes' | translate }}</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col" ng-show="membersAreaMePetsDetailScope.pet.sizeNeck">
+						<div class="padding-left">
+							<b>{{ 'members-area.me.pets.neckSize' | translate }}:</b>
+							{{ membersAreaMePetsDetailScope.pet.sizeNeck }}cm
+						</div>
+					</div>
+					<div class="col" ng-show="membersAreaMePetsDetailScope.pet.sizeChest">
+						<div class="padding-left">
+							<b>{{ 'members-area.me.pets.chestSize' | translate }}:</b>
+							{{ membersAreaMePetsDetailScope.pet.sizeChest }}cm
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" ng-show="membersAreaMePetsDetailScope.pet.additionalInformation">
+				<div class="col">
+					<h3>{{ 'general.additionalInformation' | translate }}</h3>
+					{{ membersAreaMePetsDetailScope.pet.additionalInformation }}
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

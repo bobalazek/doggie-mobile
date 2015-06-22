@@ -1,0 +1,210 @@
+<ion-view>
+	<ion-nav-title>
+		{{ 'general.edit' | translate }} 
+		{{ membersAreaMePetsEditScope.data.name }}
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button ui-sref="members-area.me.pets.list" ui-sref="members-area.my-pets.list" class="button button-icon icon ion-arrow-left-c"></button>
+	</ion-nav-buttons>
+	<ion-content padding="true">
+		<h4>{{ 'members-area.me.pets.basicData' | translate }}</h4>
+		<div class="list">
+			<div class="text-center">
+				<h5>{{ 'general.image' | translate }}</h5>
+				<div style="margin-bottom: 20px;">
+					<img id="pet-image" ng-src="{{ membersAreaMePetsEditScope.data.image }}" alt="Pet image" style="display: block; max-width: 100%; margin: 0 auto;" />
+					<input id="pet-file" type="file" style="height: 1px; width: 1px;" ng-file-select="membersAreaMePetsEditScope.fileChanged($files, $event)" />
+				</div>
+				<div style="margin-bottom: 20px;">
+					<button class="button button-primary" ng-click="membersAreaMePetsEditScope.pickImageFromGallery()">
+						<i class="icon ion-images"></i>
+					</button>
+					<button class="button button-primary" ng-click="membersAreaMePetsEditScope.takeAPicture()">
+						<i class="icon ion-camera"></i>
+					</button>
+				</div>
+			</div>
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">
+					{{ 'general.name' | translate }}
+				</span>
+				<input type="text" placeholder="Snoopy" ng-model="membersAreaMePetsEditScope.data.name" />
+			</label>
+			<label class="item item-input item-select">
+				<span class="input-label">
+					{{ 'general.species' | translate }}
+				</span>
+				<select ng-model="membersAreaMePetsEditScope.data.species">
+					<option value="dog" selected="selected">
+						{{ 'animals.species.dog' | translate }}
+					</option>
+					<option value="cat">
+						{{ 'animals.species.cat' | translate }}
+					</option>
+					<option value="bird">
+						{{ 'animals.species.bird' | translate }}
+					</option>
+					<option value="other">
+						{{ 'general.other' | translate }}
+					</option>
+				</select>
+			</label>
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">
+					{{ 'general.breed' | translate }}
+				</span>
+				<input type="text" placeholder="Mešanec" ng-model="membersAreaMePetsEditScope.data.breed" />
+			</label>
+			<label class="item item-input item-select">
+				<div class="input-label">
+					{{ 'general.gender' | translate }}
+				</div>
+				<select ng-model="membersAreaMePetsEditScope.data.gender">
+					<option value="male" selected="selected">
+						{{ 'general.male' | translate }}
+					</option>
+					<option value="female">
+						{{ 'general.female' | translate }}
+					</option>
+				</select>
+			</label>
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">
+					{{ 'general.birthdate' | translate }}
+				</span>
+				<input type="date" placeholder="2009-12-24" ng-model="membersAreaMePetsEditScope.data.birthdate" max="{{ applicationScope.todaysDate }}" />
+			</label>
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">
+					{{ 'general.weight' | translate }}
+				</span>
+				<input type="text" placeholder="10kg" ng-model="membersAreaMePetsEditScope.data.weight" />
+			</label>
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">
+					{{ 'general.size' | translate }}
+				</span>
+				<input type="text" placeholder="Majhen" ng-model="membersAreaMePetsEditScope.data.size" />
+			</label>
+		</div>
+		<h4>{{ 'general.detailed' | translate }}</h4>
+		<div class="row">
+			<div class="col">
+				<div class="item item-toggle">
+					{{ 'general.chipped' | translate }}
+					<label class="toggle">
+						<input type="checkbox" ng-model="membersAreaMePetsEditScope.data.isMicrochipped"  />
+						<div class="track">
+							<div class="handle"></div>
+						</div>
+					</label>
+				</div>
+				<div ng-show="membersAreaMePetsEditScope.data.isMicrochipped">
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">
+							{{ 'members-area.me.pets.microchipNumber' | translate }}
+						</span>
+						<input type="number" placeholder="123456789" ng-model="membersAreaMePetsEditScope.data.microchipNumber" />
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">
+							{{ 'members-area.me.pets.microchipLocation' | translate }}
+						</span>
+						<input type="text" placeholder="Vrat - levo" ng-model="membersAreaMePetsEditScope.data.microchipLocation" />
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">
+							{{ 'members-area.me.pets.microchipDate' | translate }}
+						</span>
+						<input type="date" placeholder="2012-12-24" ng-model="membersAreaMePetsEditScope.data.timeMicrochipped" max="{{ applicationScope.todaysDate }}" />
+					</label>
+				</div>
+			</div>
+			<div class="col">
+				<div class="item item-toggle">
+					{{ 'general.tattooed' | translate }}
+					<label class="toggle">
+						<input type="checkbox" ng-model="membersAreaMePetsEditScope.data.isTattooed"  />
+						<div class="track">
+							<div class="handle"></div>
+						</div>
+					</label>
+				</div>
+				<div ng-show="membersAreaMePetsEditScope.data.isTattooed">
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">
+							{{ 'members-area.me.pets.tattooNumber' | translate }}
+						</span>
+						<input type="number" placeholder="123456789" ng-model="membersAreaMePetsEditScope.data.tattooNumber" />
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">
+							{{ 'members-area.me.pets.tattooDate' | translate }}
+						</span>
+						<input type="date" placeholder="2012-12-24" ng-model="membersAreaMePetsEditScope.data.timeTattooed" max="{{ applicationScope.todaysDate }}" />
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="item item-toggle">
+					{{ 'general.vaccinated' | translate }}
+					<label class="toggle">
+						<input type="checkbox" ng-model="membersAreaMePetsEditScope.data.isVaccinated"  />
+						<div class="track">
+							<div class="handle"></div>
+						</div>
+					</label>
+				</div>
+				<div ng-show="membersAreaMePetsEditScope.data.isVaccinated">
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">
+							{{ 'members-area.me.pets.vaccinatedDateLast' | translate }}
+						</span>
+						<input type="date" placeholder="2012-12-24" ng-model="membersAreaMePetsEditScope.data.timeVaccinatedLast" max="{{ applicationScope.todaysDate }}" />
+					</label>
+				</div>
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">
+						{{ 'members-area.me.pets.vaccinatedDateNext' | translate }}
+					</span>
+					<input type="date" placeholder="2012-12-24" ng-model="membersAreaMePetsEditScope.data.timeVaccinatedNext" min="{{ applicationScope.todaysDate }}" />
+				</label>
+			</div>
+		</div>
+		<h4>
+			{{ 'general.sizes' | translate }} 
+			<small>({{ 'general.inCm' | translate }} )</small>
+		</h4>
+		<div class="list">
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">
+					{{ 'members-area.me.pets.neckSize' | translate }}
+				</span>
+				<input type="number" ng-model="membersAreaMePetsEditScope.data.sizeNeck" />
+			</label>
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">
+					{{ 'members-area.me.pets.chestSize' | translate }}
+				</span>
+				<input type="number" ng-model="membersAreaMePetsEditScope.data.sizeChest" />
+			</label>
+		</div>
+		<h4>{{ 'general.other' | translate }}</h4>
+		<div class="list">
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">
+					{{ 'general.additionalInformation' | translate }}
+				</span>
+				<textarea ng-model="membersAreaMePetsEditScope.data.additionalInformation" rows="5"></textarea>
+			</label>
+		</div>
+		<button class="button button-large button-positive button-block" ng-click="membersAreaMePetsEditScope.formSubmit()">
+			{{ 'general.save' | translate }}
+		</button>
+	</ion-content>
+</ion-view>

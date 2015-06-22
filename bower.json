@@ -1,0 +1,24 @@
+{
+  "name": "doggie",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.0.0"
+  },
+  "dependencies": {
+    "ngCordova": "~0.1.7-alpha",
+    "ng-debounce": "~0.1.5",
+    "gmaps-markerclusterer-plus": "~2.1.1",
+    "angular-moment": "~0.8.3",
+    "angular-translate": "~2.5.2",
+    "angular-translate-loader-url": "~2.5.2",
+    "angular-translate-loader-static-files": "~2.5.2",
+    "angular-translate-loader-partial": "~2.5.2",
+    "angular-bindonce": "~0.3.3",
+    "angular-google-maps": "~2.0.12",
+    "fontawesome": "~4.2",
+    "ionicons": "~2.0"
+  },
+  "resolutions": {
+    "angular": ">= 1.0.8"
+  }
+}

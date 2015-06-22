@@ -1,0 +1,45 @@
+<ion-view>
+	<ion-nav-title>
+		{{ 'members-area.profile.title' | translate }}
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="row">
+			<div class="col">
+				<img id="profile-image" ng-src="{{ applicationScope.user.image }}" alt="Profile image" style="display: block; max-width: 100%; margin: 0 auto;" />
+			</div>
+			<div class="col">
+				<h3>{{ 'general.information' | translate }}</h3>
+				<p>
+					{{ 'general.firstName' | translate }}:
+					<b>{{ applicationScope.user.firstName }}</b>
+				</p>
+				<p ng-show="applicationScope.user.lastName">
+					{{ 'general.lastName' | translate }}:
+					<b>{{ applicationScope.user.lastName }}</b>
+				</p>
+				<p>
+					{{ 'general.email' | translate }}:
+					<b>{{ applicationScope.user.email }}</b>
+				</p>
+			</div>
+		</div>
+		<div class="item-divider"></div>
+		<div class="padding">
+			<h3>{{ 'general.badges' | translate }}</h3>
+			<div id="badges" ng-show="applicationScope.userBadges.length">
+				<div class="list card" ng-repeat="userBadge in applicationScope.userBadges">
+					<div class="item item-icon-left">
+						<i class="icon {{ userBadge.icon }}"></i>
+						{{ userBadge.name }}
+					</div>
+				</div>
+			</div>
+			<div id="no-badges" ng-hide="applicationScope.userBadges.length">
+				{{ 'members-area.profile.noBadgesText' | translate }}
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

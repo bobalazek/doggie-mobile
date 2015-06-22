@@ -1,0 +1,55 @@
+<ion-view>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button menu-toggle="right" class="button button-icon icon ion-funnel"></button>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		{{ 'places.list.title' | translate }}
+	</ion-nav-title>
+	<ion-content>
+		<div class="list">
+			<a class="item" bindonce
+				collection-repeat="place in placesScope.places | filter : placesScope.searchText | orderBy : placesScope.orderByFilter | filter : placesScope.filterByType track by place.id"
+				item-height="116px"
+				ui-sref="places.detail({ id : place.id })"
+				ng-class="{ featured : place.isFeatured }">
+				<h2>
+					<i class="icon ion-star" ng-show="place.isPremium"></i>
+					{{ place.name }}
+					<i class="icon ion-checkmark-circled" ng-show="place.isVerified"></i>
+				</h2>
+				<p>
+					<i class="icon ion-location"></i>
+					{{ place.location.full }}
+				</p>
+				<div class="row">
+					<div class="col">
+						<i class="icon ion-bookmark"></i>
+						{{ placesScope.placeTypeToHumanType( place.type ) }}
+					</div>
+					<div class="col text-right">
+						<i class="icon ion-map"></i>
+						{{ place.distanceFromMyself || 'neznano' }} km
+					</div>
+				</div>
+			</a>
+			<div class="item" ng-show="( placesScope.places | filter : placesScope.searchText | filter : placesScope.filterByType ).length == 0 && placesScope.places.length > 0 && placesScope.placesLoaded" style="white-space: normal;">
+				{{ 'places.noneFoundWithThisCriteria' | translate }}<span ng-show="placesScope.searchText != ''"> {{ 'posts.andKeyword' | translate }} <b>{{ placesScope.searchText }}</b></span>.
+			</div>
+			<div class="item" ng-show="placesScope.places.length == 0">
+				{{ 'places.noneFound' | translate }}
+			</div>
+		</div>
+	</ion-content>
+	<ion-footer-bar class="bar-stable">
+		<div class="buttons"></div>
+		<h1 class="title"></h1>
+		<div class="buttons">
+			<button class="button button-clear">
+				<span ng-bind="(placesScope.places | filter : placesScope.searchText | filter : placesScope.filterByType).length">0</span> {{ 'places.placesShown' | translate }}
+			</button>
+		</div>
+	</ion-footer-bar>
+</ion-view>

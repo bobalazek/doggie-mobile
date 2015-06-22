@@ -1,0 +1,104 @@
+<header class="bar bar-header bar-positive">
+	<h1 class="title">{{ 'menu.title' | translate }}</h1>
+</header>
+<ion-content class="has-header">
+	<ion-list>
+		<div class="item item-divider">
+			<i class="icon ion-location"></i>
+			{{ 'menu.places' | translate }}
+		</div>
+		<a ui-sref="places.list" class="item" ng-class="{ active: applicationScope.isActive('/places/list')}">
+			{{ 'menu.list' | translate }}
+		</a>
+		<a ui-sref="places.map" class="item" ng-class="{ active: applicationScope.isActive('/places/map')}">
+			{{ 'menu.map' | translate }}
+		</a>
+
+		<div class="item item-divider">
+			<i class="icon ion-calendar"></i>
+			{{ 'menu.events' | translate }}
+		</div>
+		<a ui-sref="events.list" class="item" ng-class="{ active: applicationScope.isActive('/events/list')}">
+			{{ 'menu.list' | translate }}
+		</a>
+		<a ui-sref="events.map" class="item" ng-class="{ active: applicationScope.isActive('/events/map')}">
+			{{ 'menu.map' | translate }}
+		</a>
+
+		<div class="item item-divider">
+			<i class="icon ion-ios7-heart"></i>
+			{{ 'menu.animals' | translate }}
+		</div>
+		<a ui-sref="animals.list( { which : 'all' } )" class="item" ng-class="{ active: applicationScope.isActive('/animals/list/all', true) || applicationScope.isActive('/animals/list/', true) }">
+			{{ 'menu.listAll' | translate }}
+		</a>
+		<a ui-sref="animals.list( { which : 'fromSheltersAndCo' } )" class="item" ng-class="{ active: applicationScope.isActive('/animals/list/fromSheltersAndCo') }">
+			{{ 'menu.fromSheltersAndCo' | translate }}
+		</a>
+		<a ui-sref="animals.list( { which : 'privateAdoption' } )" class="item" ng-class="{ active: applicationScope.isActive('/animals/list/privateAdoption') }">
+			{{ 'menu.privateAdoption' | translate }}
+		</a>
+		<a ui-sref="animals.list( { which : 'lost' } )" class="item" ng-class="{ active: applicationScope.isActive('/animals/list/lost') }">
+			{{ 'menu.lost' | translate }}
+		</a>
+		<a ui-sref="animals.list( { which : 'found' } )" class="item" ng-class="{ active: applicationScope.isActive('/animals/list/found') }">
+			{{ 'menu.found' | translate }}
+		</a>
+
+
+		<div class="item item-divider">
+			<i class="icon ion-ios7-paper"></i>
+			{{ 'menu.posts' | translate }}
+		</div>
+		<a ui-sref="posts.list" class="item" ng-class="{ active: applicationScope.isActive('/posts/list') }">Seznam</a>
+
+		<div class="item item-divider">
+			<i class="icon ion-ios7-people"></i>
+			{{ 'menu.membersArea' | translate }}
+		</div>
+		<a ui-sref="members-area.chat" class="item" ng-class="{ active: applicationScope.isActive('/members-area/chat')}">
+			{{ 'menu.chat' | translate }}
+		</a>
+		<a ui-sref="members-area.login" class="item" ng-class="{ active: applicationScope.isActive('/members-area/login')}" ng-hide="applicationScope.userIsLogined">
+			{{ 'menu.login' | translate }}
+		</a>
+		<a ui-sref="members-area.register" class="item" ng-class="{ active: applicationScope.isActive('/members-area/register')}" ng-hide="applicationScope.userIsLogined">
+			{{ 'menu.register' | translate }}
+		</a>
+		<a ui-sref="members-area.me.profile" class="item" ng-class="{ active: applicationScope.isActive('/members-area/me/profile', true)}" ng-show="applicationScope.userIsLogined">
+			{{ 'menu.profile' | translate }}
+		</a>
+		<a ui-sref="members-area.me.profile-settings" class="item" ng-class="{ active: applicationScope.isActive('/members-area/me/profile/settings')}" ng-show="applicationScope.userIsLogined">
+			{{ 'menu.profileSettings' | translate }}
+		</a>
+		<a ui-sref="members-area.me.pets.list" class="item" ng-class="{ active: applicationScope.isActive('/members-area/me/pets/list')}" ng-show="applicationScope.userIsLogined">
+			{{ 'menu.myPets' | translate }}
+		</a>
+		<a ui-sref="members-area.logout" class="item" ng-class="{ active: applicationScope.isActive('/members-area/logout')}" ng-show="applicationScope.userIsLogined">
+			{{ 'menu.logout' | translate }}
+		</a>
+
+		<div class="item item-divider">
+			<i class="icon ion-plus-circled"></i>
+			{{ 'menu.more' | translate }}
+		</div>
+		<a ui-sref="index" class="item" ng-class="{ active: applicationScope.isActive('/index')}">
+			{{ 'menu.intro' | translate }}
+		</a>
+		<a style="display: none;" ui-sref="more.help-animals" class="item" ng-class="{ active: applicationScope.isActive('/more/help-animals')}">
+			{{ 'menu.helpAnimals' | translate }}
+		</a>
+		<a ui-sref="more.information" class="item" ng-class="{ active: applicationScope.isActive('/more/information')}">
+			{{ 'menu.information' | translate }}
+		</a>
+		<a ui-sref="more.settings" class="item" ng-class="{ active: applicationScope.isActive('/more/settings', true)}">
+			{{ 'menu.settings' | translate }}
+		</a>
+		<a ui-sref="more.faq" class="item" ng-class="{ active: applicationScope.isActive('/more/faq')}">
+			{{ 'menu.faq' | translate }}
+		</a>
+		<a ui-sref="more.contact" class="item" ng-class="{ active: applicationScope.isActive('/more/contact')}">
+			{{ 'menu.contact' | translate }}
+		</a>
+	</ion-list>
+</ion-content>

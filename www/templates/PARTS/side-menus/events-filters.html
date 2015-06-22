@@ -1,0 +1,37 @@
+<header class="bar bar-header bar-positive">
+	<h1 class="title">{{ 'filters.title' | translate }}</h1>
+</header>
+<ion-content class="has-header">
+	<div class="list list-inset">
+		<label class="item item-input">
+			<i class="icon ion-search placeholder-icon"></i>
+			<input ng-model="eventsScope.searchText" type="text" placeholder="{{ 'filters.search' | translate }}">
+		</label>
+	</div>
+	<label class="item item-input item-select">
+		<div class="input-label">
+			{{ 'filters.sortBy' | translate }}
+		</div>
+		<select ng-model="eventsScope.orderByFilter">
+			<option value="timeStart.date" selected="selected">
+				{{ 'filters.sortBy.date' | translate }}
+			</option>
+			<option value="name">
+				{{ 'filters.sortBy.name' | translate }}
+			</option>
+			<option value="location.full">
+				{{ 'filters.sortBy.location' | translate }}
+			</option>
+			<!-- <option value="distanceFromMyself" disabled="disabled">{{ 'filters.sortBy.distance' | translate }}</option> -->
+		</select>
+	</label>
+	<div class="list">
+		<div class="item item-divider">{{ 'filters.types' | translate }}</div>
+		<div class="item item-checkbox" ng-repeat="(key, eventType) in eventsScope.eventTypes">
+			<label class="checkbox">
+				<input type="checkbox" ng-model="eventsScope.eventTypes[key].checked" ng-change="eventsScope.broadcastEventsFiltersChanged()" value="true" checked="checked">
+			</label>
+			{{ eventType.text }}
+		</div>
+	</div>
+</ion-content>

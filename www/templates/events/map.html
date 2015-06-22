@@ -1,0 +1,27 @@
+<ion-view>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button menu-toggle="right" class="button button-icon icon ion-funnel"></button>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		{{ 'events.map.title' | translate }}
+	</ion-nav-title>
+	<ion-content>
+		<div id="map-events" style="height: 100%" data-tap-disabled="true"></div>
+	</ion-content>
+	<ion-footer-bar class="bar-stable">
+		<div class="buttons">
+			<button class="button button-large pull-right" ng-click="eventsMapScope.panToMyLocation()">
+				<i class="icon ion-arrow-shrink"></i>
+			</button>
+		</div>
+		<h1 class="title"></h1>
+		<div class="buttons">
+			<button class="button button-clear">
+				<span ng-bind="(eventsScope.events | filter : eventsScope.searchText | filter : eventsScope.filterByType).length">0</span> {{ 'events.eventsShown' | translate }}
+			</button>
+		</div>
+	</ion-footer-bar>
+</ion-view>

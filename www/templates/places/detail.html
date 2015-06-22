@@ -1,0 +1,82 @@
+<ion-view>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon" ng-hide="placesDetailScope.hideMenu"></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button ng-click="placesDetailScope.goBack()" class="button button-icon icon ion-arrow-left-c"></button>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		{{ placesDetailScope.place.name }}
+	</ion-nav-title>
+	<ion-content padding="true" id="place-{{ placesDetailScope.placeId }}">
+		<div class="content-loading" ng-hide="placesDetailScope.placeLoaded">
+			<i class="icon ion-loading-a"></i>
+		</div>
+		<div class="content-loaded" ng-show="placesDetailScope.placeLoaded">
+			<div class="card">
+				<div class="item item-text-wrap">
+					<h1>
+						<i class="icon ion-star" ng-show="placesDetailScope.place.isPremium"></i>
+						{{ placesDetailScope.place.name }}
+						<i class="icon ion-checkmark-circled" ng-show="placesDetailScope.place.isVerified"></i>
+					</h1>
+					<p>
+						<i class="icon ion-location"></i> 
+						{{ placesDetailScope.place.location.full }}
+					</p>
+					<p ng-hide="placesDetailScope.location.isAnonymous">	
+						<button class="button button-stable button-block" ng-click="applicationScope.openMaps( placesDetailScope.place.location.coordinates, placesDetailScope.place.location.full )">
+							<i class="icon ion-map"></i> 
+							{{ 'animals.navigateTo' | translate }}
+							{{ placesDetailScope.place.location.full }}
+						</button>
+					</p>
+				</div>
+			</div>
+			<div id="map-place"></div>
+			<div class="card" ng-show="placesDetailScope.place.contacts.email || placesDetailScope.place.contacts.website || placesDetailScope.place.contacts.phone || placesDetailScope.place.contacts.openingTimes">
+				<div class="item item-text-wrap" ng-show="placesDetailScope.place.contacts.email">
+					<h3>
+						<i class="icon ion-email"></i> 
+						{{ 'general.email' | translate }}
+					</h3>
+					<button class="button button-stable button-block" ng-click="applicationScope.openEmail( placesDetailScope.place.contacts.email )">
+						{{ 'places.sendEmailTo' | translate }}
+						{{ placesDetailScope.place.contacts.email }}
+					</button>
+				</div>
+				<div class="item item-text-wrap" ng-show="placesDetailScope.place.contacts.website">
+					<h3>
+						<i class="icon ion-earth"></i> 
+						{{ 'general.website' | translate }}
+					</h3>
+					<button class="button button-stable button-block" ng-click="applicationScope.openWebsite( placesDetailScope.place.contacts.website )">
+						{{ 'places.visit' | translate }}
+						{{ placesDetailScope.place.contacts.website }}
+					</button>
+				</div>
+				<div class="item item-text-wrap" ng-show="placesDetailScope.place.contacts.phone">
+					<h3>
+						<i class="icon ion-ios7-telephone"></i> 
+						{{ 'general.phone' | translate }}
+					</h3>
+					<button class="button button-stable button-block" ng-click="applicationScope.call( placesDetailScope.place.contacts.phone  )">
+						{{ 'places.callTo' | translate }}
+						{{ placesDetailScope.place.contacts.phone }}
+					</button>
+				</div>
+				<div class="item item-text-wrap" ng-show="placesDetailScope.place.contacts.openingTimes">
+					<h3>
+						<i class="icon ion-clock"></i> 
+						{{ 'general.openingTimes' | translate }}
+					</h3>
+					<p style="white-space: pre;">{{ placesDetailScope.place.contacts.openingTimes }}</p>
+				</div>
+			</div>
+			<iframe class="fb_iframe_widget" ng-show="placesDetailScope.place.contacts.facebook" ng-src="{{ placesDetailScope.getFacebookIframeSrc(placesDetailScope.place.contacts.facebook) }}" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:290px;" allowTransparency="true"></iframe>
+			<button class="button button-dark button-block" href="#" ng-click="placesDetailScope.contactUs()">
+				{{ 'places.yourPlaceText' | translate }}
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

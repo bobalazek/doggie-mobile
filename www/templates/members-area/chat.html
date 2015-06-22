@@ -1,0 +1,27 @@
+<ion-view title="{{ 'members-area.chat.title' | translate }}">
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="list">
+			<div class="item item-input-inset">
+				<label class="item-input-wrapper">
+					<input type="text" placeholder="{{ 'members-area.chat.message' | translate }}" ng-model="membersAreaChatScope.chatMessageText" />
+				</label>
+				<button class="button button-small" ng-click="membersAreaChatScope.submitForm()">
+					{{ 'general.send' | translate }}
+				</button>
+			</div>
+			<div class="item item-avatar"
+				collection-repeat="chatMessage in membersAreaChatScope.chatMessages"
+				item-height="116px">
+				<img ng-src="{{ chatMessage.user.image || 'img/placeholders/user.png' }}">
+				<h2>{{ chatMessage.user ? chatMessage.user.fullName : 'general.anonymous' | translate }}</h2>
+				<p class="chat-message-text">{{ chatMessage.content }}</p>
+				<p class="text-right">
+					{{ chatMessage.timeCreated.date | amDateFormat : 'dddd, Do MMMM YYYY ob HH:mm:ss' }}
+				</p>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,10 @@
+<ion-view>
+	<ion-tabs class="tabs-striped tabs-background-positive tabs-color-light tabs-icon-top tabs-top" ng-controller="EventsController as eventsScope">
+		<ion-tab title="{{ 'menu.list' | translate }}" icon="ion-document-text">
+			<ion-nav-view name="list"></ion-nav-view>
+		</ion-tab>
+		<ion-tab title="{{ 'menu.map' | translate }}" icon="ion-earth">
+			<ion-nav-view name="map"></ion-nav-view>
+		</ion-tab>
+	</ion-tabs>
+</ion-view>

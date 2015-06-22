@@ -1,0 +1,177 @@
+<ion-view>
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon" ng-hide="animalsDetailScope.hideMenu"></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button ng-click="animalsDetailScope.goBack()" class="button button-icon icon ion-arrow-left-c"></button>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		{{ animalsDetailScope.animal.name }}
+	</ion-nav-title>
+	<ion-content padding="true">
+		<div class="content-loading" ng-hide="animalsDetailScope.animalLoaded">
+			<i class="icon ion-loading-a"></i>
+		</div>
+		<div class="content-loaded" ng-show="animalsDetailScope.animalLoaded">
+			<img ng-src="{{ animalsDetailScope.animal.image.url }}" class="full-image" style="display: block; max-width: 480px; margin: 0 auto;" />
+			<div class="card">
+				<div class="item item-text-wrap">
+					<h1>
+						<small>
+							<i class="icon ion-{{ animalsDetailScope.animal.gender }}"></i>
+						</small>
+						{{ animalsDetailScope.animal.name }}
+					</h1>
+					<p ng-show="animal.location.isAnonymous || animal.location.full">
+						<i class="icon ion-location"></i> 
+						{{ animalsDetailScope.animal.location.full }}
+						<small ng-show="animalsDetailScope.animal.location.place">
+							<br />
+							({{ animalsDetailScope.animal.location.place.name }})
+						</small>
+					</p>
+					<p ng-show="animalsDetailScope.animal.location.isAnonymous || animalsDetailScope.animal.location.full">
+						<i class="icon ion-location"></i>
+						<span ng-show="animalsDetailScope.animal.location.isAnonymous">
+							{{ 'general.anonymous' | translate }}
+						</span>
+						<span ng-show="animalsDetailScope.animal.location.full">
+							{{ animalsDetailScope.animal.location.full }}
+							<small ng-show="animalsDetailScope.animal.location.place">
+								<br />
+								({{ animalsDetailScope.animal.location.place.name }})
+							</small>
+						</span>
+						<button ng-show="animalsDetailScope.animal.location.full" class="button button-stable button-block" ng-click="applicationScope.openMaps( animalsDetailScope.animal.location.coordinates )">
+							<i class="icon ion-map"></i>
+							{{ 'places.navigateTo' | translate }}
+							{{ animalsDetailScope.animal.location.full }}
+						</button>
+					</p>
+				</div>
+			</div>
+			<div class="card" ng-show="animalsDetailScope.animal.description">
+				<div class="item item-text-wrap">
+					{{ animalsDetailScope.animal.description }}
+				</div>
+			</div>
+			<div class="card">
+				<div class="item item-text-wrap">
+					<h2>{{ 'general.details' | translate }}</h2>
+					<div class="row">
+						<div class="col">
+							<div ng-show="animalsDetailScope.animal.gender">
+								<b>{{ 'general.gender' | translate }}:</b> 
+								{{ 'general.' + animalsDetailScope.animal.gender | translate }} <br />
+							</div>
+							<div ng-show="animalsDetailScope.animal.breed">
+								<b>{{ 'general.breed' | translate }}:</b> 
+								{{ animalsDetailScope.animal.breed }} <br />
+							</div>
+							<div ng-show="animalsDetailScope.animal.species">
+								<b>{{ 'general.species' | translate }}:</b> 
+								{{ 'animals.species.' + animalsDetailScope.animal.species | translate }} <br />
+							</div>
+							<div ng-show="animalsDetailScope.animal.birthdate.date">
+								<b>{{ 'general.birthdate' | translate }}:</b> 
+								{{ animalsDetailScope.animal.birthdate.date | amDateFormat : 'Do MMMM YYYY' }} <br />
+							</div>
+							<div ng-show="animalsDetailScope.animal.age">
+								<b>{{ 'general.age' | translate }}:</b> 
+								{{ animalsScope.animalAgeToHumanAge( animalsDetailScope.animal.age ) }} <br />
+							</div>
+							<div ng-show="animalsDetailScope.animal.weight">
+								<b>{{ 'general.weight' | translate }}:</b>
+								{{ animalsDetailScope.animal.details.weight }} <br />
+							</div>
+							<div ng-show="animalsDetailScope.animal.size">
+								<b>{{ 'general.size' | translate }}:</b> 
+								{{ animalsDetailScope.animal.details.size }}
+							</div>
+						</div>
+						<div class="col">
+							<b>{{ 'general.chipped' | translate }}:</b>
+							{{ animalsDetailScope.animal.details.isChipped ? 'Ja' : 'Ne' }} <br />
+
+							<b>{{ 'general.vaccinated' | translate }}:</b> 
+							{{ animalsDetailScope.animal.details.isVaccinated ? 'Ja' : 'Ne' }} <br />
+
+							<b>{{ 'general.trained' | translate }}:</b>
+							{{ animalsDetailScope.animal.details.isTrained ? 'Ja' : 'Ne' }} <br />
+
+							<b>{{ 'general.houseBroken' | translate }}:</b>
+							{{ animalsDetailScope.animal.details.houseBroken ? 'Ja' : 'Ne' }} <br />
+
+							<b>{{ 'general.spayedNeutered' | translate }}:</b> 
+							{{ animalsDetailScope.animal.details.isSpayedNeutered ? 'Ja' : 'Ne' }}
+						</div>
+					</div>
+					<div class="row" ng-show="animalsDetailScope.animal.via != 'private'">
+						<div class="col">
+							<h3>{{ 'general.shelterInformation' | translate }}</h3>
+							<div ng-show="animalsDetailScope.animal.details.timeArrived">
+								<b>{{ 'general.timeArrived' | translate }}:</b>
+								{{ animalsDetailScope.animal.details.timeArrived.date | amDateFormat : 'Do MMMM YYYY' }}
+							</div>
+							<div>
+								<b>{{ 'general.readyForAdoption' | translate }}:</b>
+								{{ animalsDetailScope.animal.details.isReadyForAdoption ? 'Ja' : 'Ne' }}
+							</div>
+							<div ng-show="animalsDetailScope.animal.details.isQuarantined && animalsDetailScope.animal.details.timeQuarantinedUntil">
+								<b>{{ 'general.timeQuarantinedUntil' | translate }}:</b>
+								{{ animalsDetailScope.animal.details.timeQuarantinedUntil.date | amDateFormat : 'Do MMMM YYYY' }}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col text-center">
+							<hr />
+							<b>{{ 'general.lastUpdated' | translate }}:</b> <br />
+							{{ animalsDetailScope.animal.timeUpdated.date | amDateFormat : 'Do MMMM YYYY HH:mm:ss' }}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card" ng-show="animalsDetailScope.animal.additionalInformation || animalsDetailScope.animal.detailsUrl">
+				<div class="item item-divider">
+					<h3>{{ 'general.additionalInformation' | translate }}</h3>
+				</div>
+				<div class="item item-text-wrap" ng-show="animalsDetailScope.animal.additionalInformation">
+					{{ animalsDetailScope.animal.additionalInformation }}
+				</div>
+				<div class="item item-text-wrap" ng-show="animalsDetailScope.animal.detailsUrl">
+					<button class="button button-stable button-block" ng-click="applicationScope.openWebsite( animalsDetailScope.animal.detailsUrl )">
+						<i class="icon ion-earth"></i> 
+						{{ 'places.visit' | translate }}
+						{{ animalsDetailScope.animal.detailsUrl }}
+					</button>
+				</div>
+			</div>
+			<div class="card" ng-show="animalsDetailScope.animal.contactInformation != null || (animalsDetailScope.animal.location.place != null && ( animalsDetailScope.animal.location.place.contacts.email || animalsDetailScope.animal.location.place.contacts.website || animalsDetailScope.animal.location.place.contacts.phone))">
+				<div class="item item-text-wrap">
+					<h3>{{ 'general.contactInformation' | translate }}</h3>
+					{{ animalsDetailScope.animal.contactInformation }}
+					<div class="row">
+						<div class="col">
+							<button ng-show="animalsDetailScope.animal.location.place.contacts.email" class="button button-stable button-block" ng-click="applicationScope.openEmail( animalsDetailScope.animal.location.place.contacts.email )">
+								<i class="icon ion-email"></i>
+								{{ 'places.sendEmailTo' | translate }}
+								{{ animalsDetailScope.animal.location.place.contacts.email }}
+							</button>
+							<button ng-show="animalsDetailScope.animal.location.place.contacts.website" class="button button-stable button-block" ng-click="applicationScope.openWebsite( animalsDetailScope.animal.location.place.contacts.website )">
+								<i class="icon ion-earth"></i> 
+								{{ 'places.visit' | translate }}
+								{{ animalsDetailScope.animal.location.place.contacts.website }}
+							</button>
+							<button ng-show="animalsDetailScope.animal.location.place.contacts.phone" class="button button-stable button-block" ng-click="applicationScope.call( placesDetailScope.place.location.contacts.phone )">
+								<i class="icon ion-ios7-telephone"></i> 
+								{{ 'places.callTo' | translate }}
+								{{ animalsDetailScope.animal.location.place.contacts.phone }}
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

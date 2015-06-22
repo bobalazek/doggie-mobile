@@ -1,0 +1,33 @@
+<header class="bar bar-header bar-positive">
+	<h1 class="title">{{ 'filters.title' | translate }}</h1>
+</header>
+<ion-content class="has-header">
+	<div class="list list-inset">
+		<label class="item item-input">
+			<i class="icon ion-search placeholder-icon"></i>
+			<input ng-model="placesScope.searchText" type="text" placeholder="{{ 'filters.search' | translate }}">
+		</label>
+	</div>
+	<label class="item item-input item-select">
+		<div class="input-label">
+			{{ 'filters.sortBy' | translate }}
+		</div>
+		<select ng-model="placesScope.orderByFilter">
+			<option value="distanceFromMyself" selected="selected">
+				{{ 'filters.sortBy.distance' | translate }}
+			</option>
+			<option value="name">
+				{{ 'filters.sortBy.name' | translate }}
+			</option>
+		</select>
+	</label>
+	<div class="list">
+		<div class="item item-divider">{{ 'filters.types' | translate }}</div>
+		<div class="item item-checkbox" ng-repeat="(key, placeType) in placesScope.placeTypes">
+			<label class="checkbox">
+				<input type="checkbox" ng-model="placesScope.placeTypes[key].checked" ng-change="placesScope.broadcastPlacesFiltersChanged()" value="true" checked="checked">
+			</label>
+			{{ placeType.text }}
+		</div>
+	</div>
+</ion-content>

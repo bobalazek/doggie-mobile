@@ -1,0 +1,17 @@
+<ion-view ng-controller="AnimalsController as animalsScope">
+	<ion-tabs class="tabs-striped tabs-background-positive tabs-color-light tabs-icon-top tabs-top" ng-controller="EventsController as eventsScope">
+		<ion-tab title="{{ 'menu.listAll' | translate }}" icon="ion-document-text" on-select="animalsScope.initializeAnimals('all')">
+			<div ng-include="'templates/app/animals/list.html'"></div>
+		</ion-tab>
+		<ion-tab title="{{ 'menu.fromSheltersAndCo' | translate }}" icon="ion-home" on-select="animalsScope.initializeAnimals('fromSheltersAndCo')">
+			<div ng-include="'templates/app/animals/list.html'"></div>
+		</ion-tab>
+
+		<ion-tab title="{{ 'menu.privateAdoption' | translate }}" icon="ion-locked" on-select="animalsScope.initializeAnimals('privateAdoption')">
+			<div ng-include="'templates/app/animals/list.html'"></div>
+		</ion-tab>
+		<ion-tab title="{{ 'menu.lost' | translate }}" icon="ion-help" on-select="animalsScope.initializeAnimals('lost')">
+			<div ng-include="'templates/app/animals/list.html'"></div>
+		</ion-tab>
+	</ion-tabs>
+</ion-view>

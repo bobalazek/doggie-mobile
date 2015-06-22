@@ -1,0 +1,66 @@
+<div ng-controller="EventsListController as eventsListScope">
+	<ion-header-bar class="bar-positive">
+		<img src="img/icon_small.png" alt="Logo" style="padding-right: 20px;" />
+		<h1 class="title">{{ 'events.list.title' | translate }}</h1>
+		<div class="buttons">
+			<button menu-toggle="right" class="button button-icon icon ion-funnel"></button>
+		</div>
+	</ion-header-bar>
+	<ion-content class="has-header padding">
+		<div class="list card"
+			collection-repeat="event in eventsScope.events | filter : eventsScope.searchText | orderBy : eventsScope.orderByFilter | filter : eventsScope.filterByType track by event.id"
+			collection-item-height="250"
+			style="display: block; width: 100%;" >
+			<div class="item">
+				<h2>{{ event.name }}</h2>
+				<p>
+					<i class="icon ion-clock"></i>
+					{{ event.timeStart.date | amDateFormat : 'dddd, Do MMMM YYYY ob HH:mm' }}
+					<small>
+						(<span am-time-ago="event.timeStart.date"></span>)
+					</small>
+				</p>
+				<p ng-show="event.timeApplicationDeadline">
+					<i class="icon ion-android-timer"></i>
+					{{ event.timeApplicationDeadline.date | amDateFormat : 'dddd, Do MMMM YYYY ob HH:mm' }}
+					<small>
+						(<span am-time-ago="event.timeApplicationDeadline.date"></span>)
+					</small>
+					<small>- {{ 'general.applicationDeadline' | translate }}</small>
+				</p>
+				<p ng-hide="event.location.is_anononymous">
+					<i class="icon ion-location"></i>
+					{{ event.location.full }}
+					<small ng-show="event.location.place">
+						<br />
+						({{ event.location.place.name }})
+					</small>
+				</p>
+				<p ng-show="event.organizer">
+					<i class="icon ion-ios7-people"></i>
+					{{ event.organizer }}
+				</p>
+				<p>
+					<i class="icon ion-bookmark"></i>
+					{{ 'events.types.' + event.type | translate }}
+				</p>
+			</div>
+			<div class="item item-body" ng-show="event.description && event.image.url">
+				<img class="full-image" ng-show="event.image.url" ng-src="{{ event.image.url }}" style="max-width: 480px; display: block; margin: 0 auto;">
+				{{ event.description | limitTo : 256 }}...
+			</div>
+			<a class="item item-icon-left" ui-sref="events.detail({ id : event.id, hideMenu : true })">
+				<i class="icon ion-search"></i>
+				{{ 'general.details' | translate }}
+			</a>
+		</div>
+		<div class="list card card-full-width">
+			<div class="item item-body" ng-show="eventsScope.events.length == 0">
+				{{ 'events.noneFound' | translate }}
+			</div>
+			<div class="item item-body" ng-show="(eventsScope.events | filter : eventsScope.searchText | filter : eventsScope.filterByType).length == 0 && eventsScope.eventsLoaded">
+				{{ 'events.noneFoundWithThisCriteria' | translate }}<span ng-show="eventsScope.searchText != ''"> {{ 'posts.andKeyword' | translate }} <b>{{ eventsScope.searchText }}</b></span>.
+			</div>
+		</div>
+	</ion-content>
+</div>

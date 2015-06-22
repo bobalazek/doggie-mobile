@@ -1,0 +1,200 @@
+/***** General *****/
+hr {
+	height: 1px;
+	background: #333;
+	border: none;
+}
+
+.scroll {
+  height: 100%;
+}
+
+/***** Map Fix *****/
+#map,
+#map-events,
+#map-places,
+#map-place {
+	display: block;
+	width: 100%;
+	height: 240px;
+}
+
+/***** FB Fix *****/
+#fb-root {
+    display: none;
+}
+
+.fb_iframe_widget, 
+.fb_iframe_widget span, 
+.fb_iframe_widget span iframe[style] {
+    width: 100% !important;
+}
+
+/***** Animals *****/
+.featured {
+	background: #FFA400;
+}
+
+	.featured h1,
+	.featured h2,
+	.featured h3,
+	.featured p,
+	.featured .col {
+		color: #fff;
+	}
+
+	.ion-male {
+		color: #4a87ee;
+	}
+
+	.ion-female {
+		color: #F43AB3;
+	}
+
+/***** Posts *****/
+.post {
+	width: 100%;
+	display: block !important;
+	padding-top: 0;
+	height: 109px;
+}
+
+	.post img {
+		float: left;
+	}
+
+	/* Darn flexbox somehow doens't want to work here... */
+	.post .row {
+		display: block;
+		width: 100%;
+	}
+
+	.post .col {
+		width: 50% !important;
+		float: left;
+
+		-webkit-box-flex: inherit;
+		-webkit-flex: inherit;
+		-moz-box-flex: inherit;
+		-moz-flex: inherit;
+		-ms-flex: inherit;
+		flex: inherit;
+	}
+
+	.post .post-background-image {
+		display: none;
+	}
+
+	.post .right-side {
+		text-align: right;
+		font-size: 12px; 
+		line-height: 1.2;
+	}
+
+.post-first {
+	padding: 0;
+	height: 393px;
+}
+
+	.post-first img {
+		display: none;
+	}
+
+		.post-first .post-background-image {
+			display: block;
+			height: 300px;
+			width: 100%;
+			background-repeat: no-repeat;
+			background-position: top center;
+			background-size: cover;
+		}
+
+		.post-first .right-side {
+			padding-right: 16px;
+		}
+
+	.post-first .clearfix {
+		padding: 15px;
+	}
+
+/***** Card full width *****/
+.card-full-width {
+	display: block;
+	width: 100%;
+	margin: 0;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box; 
+}
+
+/***** Content Loading ******/
+.content-loading {
+	text-align: center;
+	font-size: 64px;
+	padding-top: 100px;
+}
+
+/***** Clearfix *****/
+.clearfix:before,
+.clearfix:after {
+	content: "";
+	display: table;
+}
+ 
+.clearfix:after {
+	clear: both;
+}
+ 
+.clearfix {
+	zoom: 1; /* ie 6/7 */
+}
+
+/***** Float *****/
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+/***** Html element *****/
+.html-element {
+	white-space: pre; 
+	font-size: 11px; 
+	line-height: 1.2;
+}
+
+/****** Menu icon *****/
+.menu-open .ion-navicon:before {
+	content: "\f12a" !important;
+}
+
+/***** Chat Message Text *****/
+.chat-message-text {
+	overflow: auto !important;
+	text-overflow: inherit !important;
+	white-space: normal !important;
+	height: 40px;
+}
+
+/***** Video Responsive *****/
+.embed-container { 
+	position: relative; 
+	padding-bottom: 56.25%; 
+	height: 0; 
+	overflow: hidden; 
+	max-width: 100%; 
+	height: auto; 
+}
+
+.embed-container iframe, 
+.embed-container object, 
+.embed-container embed { 
+	position: absolute; 
+	top: 0; 
+	left: 0;
+	width: 100%; 
+	height: 100%; 
+}

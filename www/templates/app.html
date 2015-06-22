@@ -1,0 +1,25 @@
+<ion-tabs class="tabs-striped tabs-background-positive tabs-color-light tabs-icon-top">
+	<ion-tab title="{{ 'menu.places' | translate }}" icon="ion-location" href="/app/places">
+		<div ng-include="'templates/app/places.html'"></div>
+	</ion-tab>
+
+	<ion-tab title="{{ 'menu.events' | translate }}" icon="ion-calendar" href="/app/events">
+		<div ng-include="'templates/app/events.html'"></div>
+	</ion-tab>
+
+	<ion-tab title="{{ 'menu.animals' | translate }}" icon="ion-heart" href="/app/animals">
+		<div ng-include="'templates/app/animals.html'"></div>
+	</ion-tab>
+
+	<ion-tab title="{{ 'menu.posts' | translate }}" icon="ion-ios7-paper" href="/app/posts">
+		<div ng-include="'templates/app/posts.html'"></div>
+	</ion-tab>
+
+	<ion-tab title="{{ 'menu.membersArea' | translate }}" icon="ion-ios7-people" href="/app/members-area">
+		<div ng-include="'templates/app/members-area.html'"></div>
+	</ion-tab>
+	
+	<ion-tab title="{{ 'menu.more' | translate }}" icon="ion-plus" href="/app/more">
+		<div ng-include="'templates/app/more.html'"></div>
+	</ion-tab>
+</ion-tabs>
