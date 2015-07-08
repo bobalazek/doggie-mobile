@@ -6,8 +6,13 @@ Doggie is an web and mobile application for all dog owners, where you will be ab
 
 Build with [Ionic](http://ionicframework.com/).
 
+FAQ
+----------------
+### No tests and / or automated workflow? 
+Yes, I know, I know. I was too much concentrated with rapid development, so I just skipped it. I will do them ASAP. I promise!
+
 Preview
-----------------------
+----------------
 
 ### Menu and Animals ###
 ![Menu and Animals preview](doc/assets/images/preview.png)
