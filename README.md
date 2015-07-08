@@ -8,7 +8,7 @@ Build with [Ionic](http://ionicframework.com/).
 
 FAQ
 ----------------
-### No tests and / or automated workflow? 
+### No tests and / or automated workflow (besides basic ionic tasks)? 
 Yes, I know, I know. I was too much concentrated with rapid development, so I just skipped it. I will do them ASAP. I promise!
 
 Preview
